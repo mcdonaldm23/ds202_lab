@@ -1,0 +1,45 @@
+---
+title: "Lab 2"
+author: "Omima Hassan"
+date: "9/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head(choco)
+```
+## Question Set Individual
+
+**For each of the questions below provide at least one graphic as a basis for your answer.**
+
+1. How are ratings distributed? Don't forget to mention outliers, if there are any.
+* Raings are distributed based on the amount of chocolates that were sold. The average ratings for chocolates ranged from 2.5 to 3.5 stars while outliers included ratings of 5 and 1.
+```{r}
+library(classdata)
+hist(choco$Rating, xlab = "Chocolae Rating", ylab = "Amount Sold", main = "Histogram of chocolate ratings")
+```
+
+
+2. Do ratings depend on the cocoa percentage of a chocolate bar? 
+
+* Ratings don't depend on the cocoa percentage
+
+```{r}
+plot(choco$Rating , choco$Cocoa.Pct, xlab = "Chocolate Rating", ylab = "Chocolate Percentage", main = "Chocolate Rating with Choclate Percentage")
+```
+
+
+3. What class is the variable representing company locations? How is this different from a 'character' variable?
+
+* Company represents a factor variable.
+
+* A factor variable is different from a character in that it stores a text value as a number, so in this example each company would have an associated number that can also be used to represent it.
+
+```{r}
+class(choco$Company)
+```
