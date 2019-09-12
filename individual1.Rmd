@@ -1,0 +1,35 @@
+---
+title: "Lab 2"
+author: "Maureen McDonald"
+date: "9/12/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
+head (choco)
+```
+
+1.
+Ratings are distributed in a system of 1-5. A majority of the chocolate was rated between 2.5 and 3.5 with outliers at ratings 1 and 5.
+```{r}
+hist(choco$Rating, xlab = "Rating of Chocolate",ylab = "Amount Sold", main = "Histogram of Chocolate Ratings")
+```
+
+2.
+The ratings do not depend on the cocoa percentage of a chocolate bar.
+```{r}
+plot(choco$Rating, choco$Cocoa.Pct, xlab = "Rating of Chocolate", ylab = "Cocoa Percentage", main = "Scatterplot of Ratings by Cocoa Percentage")
+```
+
+3.
+Company is in a factor class. A factor is related to a number, while a charater is only related to letters.
+```{r}
+class(choco$Company)
+```
+
+
