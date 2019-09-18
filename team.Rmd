@@ -2,7 +2,8 @@
 title: "Lab 2 Team"
 author: "Maureen McDonald"
 date: "9/12/2019"
-output: html_document
+output:
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,16 +12,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 choco = read.csv("https://raw.githubusercontent.com/lbchu/ds202_labs/master/choco.csv")
-head(choco)
 ```
 
 1.
-```{r, eval=FALSE}
-recent_rating = choco[choco$Review.Date>2011,] #Creating a new list that shows only reviews dates from after 2011.
 
-unique(recent_rating$Company.Location) # NOTICE: how many countries are listed but how many levels are there? #Locations of Companies that have review dates after 2011 without duplicates.
+```{r}
+recent_rating = choco[choco$Review.Date>2011,] #Creates a new list that only shows reviews that were made after 2011.
 
-recent_rating$Company.Location = droplevels(recent_rating$Company.Location) #Dropping all the level before 2011.
+unique(recent_rating$Company.Location) # NOTICE: how many countries are listed but how many levels are there? 
+
+recent_rating$Company.Location = droplevels(recent_rating$Company.Location) #Dropping all the levels before 2011.
+#Locations of Companies that have review dates after 2011 without duplicates.
 
 head(recent_rating) #Gives you a preview of the recent ratings data set.
 
@@ -34,6 +36,7 @@ uk_recent = subset(recent_rating,Company.Location =='U.K.') #Companies in UK wit
 germany_recent = subset(recent_rating,Company.Location=='Germany') #Companies in Germany with rating made after 2011
 
 par(mfrow=c(2,2)) #combining multiple plots to fill in the matrix by columns
+
 color1 = ifelse(france_recent$Rating >median(france_recent$Rating), 'blue', 'green') #Tells the graph that if the rating is higher than the median rating the color is blue, but if it is lower than the median than it is green
 plot(france_recent$Cocoa.Pct ~ france_recent$Review.Date,ylim=c(50,90),col=color1,pch=18,cex=1.5,xlab="Review Date", ylab= "Cocoa Percentage", main= "France") #Creates scatter plot based off of values indicated- review date by cocoa percentages
 legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('blue','green'),pch=18) #Shows the data that is being ploted by using a key to represent different data
@@ -47,26 +50,20 @@ plot(germany_recent$Cocoa.Pct ~ germany_recent$Review.Date,ylim=c(50,90),col=col
 legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yellow'),pch=18) #Shows the data that is being ploted by using a key to represent different data
 ```
 
-2 \. Click Zoom on the Rstudio window (under Plots) to see the plot more clearly. How do you think the plot produced from the code above can be improved? Recommend at least one possible improvement. 
 
-<<<<<<< HEAD
-Move the legend so it doesn't block the points
-=======
-#
->>>>>>> 585b1fd16ce2a81c784b2dab09390549e96f1d28
+2. Click Zoom on the Rstudio window (under Plots) to see the plot more clearly. How do you think the plot produced from the code above can be improved? Recommend at least one possible improvement. 
 
+  + Move the legend so it doesn't block the points that are plotted
 
-3 \. How does the **number** of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.
+3. How does the **number** of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.
 
 ```{r}
 hist(choco$Review.Date, main = "Review made by year", xlab = "Review Date", ylab= "Amount of reviews made")
 ```
 
-4 \. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
+4. How do ratings compare across different company locations? Focus on the three locations with the most ratings. Hint: the function `sort()` might come in handy here.
 
 ```{r}
-# USA, France, Canda
-
 library(plotly)
 
 p <- plot_ly(
@@ -75,20 +72,16 @@ p <- plot_ly(
   type= "bar"
 )
 p
-
 ```
+  + USA, France, Canada
+  +According to the plot above, the USA has much higher ratings than anywhere else in the world.
 
 
-```{r}
-# USA, France, Canada
-# According to the plot above, the USA has much higher ratings than anywhere else in the world.
-```
+5. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
 
-5 \. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
+  + What is the mean rating of all countries?
 
-What is the mean rating of all countries?
-
-6 \. Bonus points (optional): Answer the question from the dataset.
+6. Bonus points (optional): Answer the question from the dataset.
 
 ```{r}
 mean(choco$Rating)
