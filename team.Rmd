@@ -74,7 +74,7 @@ p <- plot_ly(
 p
 ```
   + USA, France, Canada
-  +According to the plot above, the USA has much higher ratings than anywhere else in the world.
+  + According to the plot above, the USA has much higher ratings than anywhere else in the world.
 
 
 5. Brainstorm and write down an interesting question that can be answer from the dataset. The question should not duplicate the questions above.
