@@ -49,7 +49,11 @@ legend('bottomright',legend=c('High Rating', 'Low Rating'),col=c('orange','yello
 
 2 \. Click Zoom on the Rstudio window (under Plots) to see the plot more clearly. How do you think the plot produced from the code above can be improved? Recommend at least one possible improvement. 
 
+<<<<<<< HEAD
 Move the legend so it doesn't block the points
+=======
+#
+>>>>>>> 585b1fd16ce2a81c784b2dab09390549e96f1d28
 
 
 3 \. How does the **number** of ratings (not the actual value of the rating) depend on the year? Use graphics to answer this question.
