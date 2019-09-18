@@ -1,6 +1,6 @@
 ---
 title: "Lab 2 Team"
-author: "Maureen McDonald"
+author: "Maureen McDonald and Omima Hassan"
 date: "9/12/2019"
 output:
   html_document: default
